@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>右键菜单</title>
+    <!-- 阿里图标 -->
+    <!-- <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/c/font_4453355_yizetjv4jeo.css" /> -->
+    <style>
+        html,
+        body {
+            margin: 0;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        #test-area {
+            border: 1px solid black;
+            width: 100%;
+            height: 100vh;
+            background-color: #333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            border: 1px solid gray;
+            background-color: #333333;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .menu>ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu>ul>li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .menu>ul>li:hover {
+            background-color: #1A6CE7;
+        }
+
+        hr {
+            margin: 0;
+            border: 1px solid gray;
+        }
+
+        .submenu {
+            padding: 0;
+            left: 200px;
+            margin-top: -32px;
+            position: absolute;
+            display: none;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .iconfont {
+            font-size: 14px;
+            padding-right: 5px;
+        }
+
+        .tip {
+            font-size: 40px;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 右键点击测试区域 -->
+    <div id="test-area">
+        <div class="tip">
+            点击右键查看效果
+        </div>
+    </div>
+    <!-- 右键菜单1 -->
+    <div class="menu" id="right-menu" hidden>
+        <ul id="UnitMenu">  
+            <!-- 如果单位非固定 -->  
+            <li>  
+                <ul>  
+                    <li>改变航向 [h]</li>  
+                    <li>设置速度  
+                        <ul>  
+                            <li>30% [1]</li>  
+                            <li>50% [2]</li>  
+                            <li>80% [3]</li>  
+                            <li>100% [4]</li>  
+                            <li>最大 [5]</li>  
+                        </ul>  
+                    </li>  
+                    <li>目标  
+                        <ul>  
+                            <li>选择目标</li>  
+                            <li>清除目标</li>  
+                        </ul>  
+                    </li>  
+                    <!-- 发射器菜单（此处假设有相应函数填充） -->  
+                    <li>任务  
+                        <ul>  
+                            <li>攻击所有 [e]</li>  
+                            <li>之字形巡逻（如果非固定）</li>  
+                            <li>巡逻站（如果非固定）</li>  
+                            <li>添加航点 [w]（如果非固定）</li>  
+                            <li>导弹警报（如果非固定）</li>  
+                            <li>清除航点（如果非固定）</li>  
+                            <li>清除所有任务</li>  
+                        </ul>  
+                    </li>  
+                </ul>  
+            </li>  
+            <!-- 如果单位是空中的 -->  
+            <li>  
+                <ul>  
+                    <li>设置高度  
+                        <ul>  
+                            <li>高 [H]</li>  
+                            <li>中 [M]</li>  
+                            <li>低 [L]</li>  
+                            <li>非常低</li>  
+                        </ul>  
+                    </li>  
+                    <li>着陆（如果任务存在着陆则显示取消着陆）  
+                        <ul>  
+                            <li>返回基地（如果有主基地）</li> 
+                            <li>在选定位置着陆</li>  
+                            <!-- 附近机场列表（如果有） --> 
+                            <li>着陆在  
+                                <ul>  
+                                    <!-- 机场列表项 -->  
+                                </ul>  
+                            </li>  
+                        </ul>  
+                    </li>  
+                </ul>  
+            </li>  
+          
+            <!-- 如果单位是潜艇 -->  
+            <li>设置深度  
+
+                <ul>  
+        
+                    <li>水面</li>  
+        
+                    <li>潜望镜深度</li>  
+        
+                    <li>中等深度</li>  
+        
+                    <li>深海</li>  
+        
+                </ul>  
+        
+            </li>  
+        
+            <!-- 潜望镜和雷达桅杆操作部分 -->  
+        
+            <li>  
+                潜望镜与雷达桅杆  
+                <ul>  
+                    <!-- 潜望镜操作 -->  
+                    <li>  
+                        潜望镜  
+                        <ul>  
+                            <!-- 根据潜望镜是否升起来添加对应的菜单项 --> 
+                            <li>如果潜望镜已升起：降低潜望镜</li>  
+                            <li>如果潜望镜未升起：升起潜望镜</li> 
+                        </ul>  
+                    </li>  
+                    <!-- 雷达桅杆操作 -->  
+                    <li>  
+                        雷达桅杆  
+                        <ul>  
+                            <!-- 根据雷达桅杆是否升起来添加对应的菜单项 -->  
+                            <li>如果雷达桅杆已升起：降低雷达桅杆</li> 
+                            <li>如果雷达桅杆未升起：升起雷达桅杆</li>  
+                        </ul>  
+                    </li>  
+                    <!-- 柴电潜艇特有的操作 -->  
+                    <li>  
+                        柴电模式  
+                        <ul>  
+                            <!-- 根据是否处于通气管航行状态添加对应的菜单项 -->
+                            <li>如果正在通气管航行：停止通气管航行</li> 
+                            <li>如果未通气管航行：开始通气管航行</li> 
+                        </ul>  
+                    </li>  
+                </ul>  
+            </li>  
+            <li>武器挂载  
+                <ul>  
+                    <!-- 遍历每个发射器 -->  
+        
+                    <!-- 这里假设发射器数量为动态数据，因此仅展示结构 -->  
+        
+                    <li>发射器1 
+                        <ul>  
+                            <!-- 如果发射器无武器，显示重新装填选项 -->  
+                            <!-- 如果发射器有武器，显示卸载选项 -->  
+                            <!-- 示例，实际内容应根据UnitInfo提供的数据动态生成 -->  
+                            <li>重新装填武器类型X [数量]</li>  
+                            <li>卸载武器名称</li>  
+                        </ul>  
+                    </li>  
+                    <!-- 更多发射器（如果有）将按此结构继续添加 -->  
+                </ul>  
+            </li>    
+            <li>平台面板 [s]</li> 
+            <!-- 如果单位有飞行甲板 --> 
+            <li>  
+                <ul>  
+                    <li>飞行甲板 [f]</li>  
+        
+                    <li>添加任务  
+        
+                        <ul>  
+        
+                            <li>战斗空中巡逻 (CAP)</li>  
+        
+                            <li>打击
+                                
+                            </li>  
+        
+                        </ul>  
+        
+                    </li>  
+        
+                </ul>  
+        
+            </li>  
+        
+          
+        
+            <li>释放控制（如果玩家控制）</li>  
+        
+        </ul>
+
+
+
+        
+        <ul>
+            <li><i class="iconfont icon-chakan1"></i>航向</li>
+            <li><i class="iconfont icon-chakanziduan"></i>速度</li>
+            <hr />
+            <li id="generate-sql">
+                <div class="link">
+                    <span><i class="iconfont icon-shengchengSQL"></i>生成SQL</span>
+                    <span>></span>
+                </div>
+                <div class="submenu menu" id="right-menu2">
+                    <ul>
+                        <li>30%</li>
+                        <li>50%</li>
+                        <li>80%</li>
+                        <li>100%</li>
+                        <li>最大</li>
+                    </ul>
+                </div>
+            </li>
+            <li id="copy">
+                <div class="link">
+                    <span><i class="iconfont icon-fuzhi"></i>目标</span>
+                    <span>></span>
+                </div>
+                <div class="submenu menu" id="right-menu3">
+                    <ul>
+                        <li>选择目标</li>
+                        <li>清除目标</li>
+                    </ul>
+                </div>
+            </li>
+            <li><i class="iconfont icon-shanchu"></i>攻击所有</li>
+            <li><i class="iconfont icon-zhongmingming"></i>之字巡逻</li>
+            <li><i class="iconfont icon-zhongmingming"></i>巡逻站</li>
+            <li><i class="iconfont icon-zhongmingming"></i>添加航路点</li>
+            <li><i class="iconfont icon-zhongmingming"></i>导弹预警</li>
+            <li><i class="iconfont icon-zhongmingming"></i>清除航路点</li>
+            <li><i class="iconfont icon-zhongmingming"></i>清除所有任务</li>
+            <li id="generate-sql">
+                <div class="link">
+                    <span><i class="iconfont icon-shengchengSQL"></i>高度设置</span>
+                    <span>></span>
+                </div>
+                <div class="submenu menu" id="right-menu2">
+                    <ul>
+                        <li>高</li>
+                        <li>中</li>
+                        <li>低</li>
+                        <li>非常低</li>
+                    </ul>
+                </div>
+            </li>
+            <hr />
+            <li><i class="iconfont icon-shuaxin"></i>刷新</li>
+        </ul>
+    </div>
+    <script>
+
+
+        //获取窗口内部大小
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        //用于重新计算窗口大小
+        window.addEventListener('resize', ()=>{
+            width = window.innerWidth;
+            height = window.innerHeight;
+        })
+
+        //默认隐藏右键菜单
+        hiddenRightMenu('right-menu');
+        document.getElementById("test-area").addEventListener('contextmenu', (e) => {
+            e.preventDefault(e);    //覆盖原生右键事件
+            showRightMenu(e, 'right-menu');   //显示菜单
+        })
+        document.getElementById("test-area").addEventListener('click', (e) => {
+            hiddenRightMenu('right-menu');
+        })
+        function showRightMenu(e, id) {
+            var rightMenu = document.getElementById(id);
+            if(e.clientY + 520 >= height){
+                rightMenu.style.top = (height - 530) + "px";
+            }else{
+                rightMenu.style.top = e.clientY + "px";
+            }
+            if(e.clientX + 200 >= width){
+                rightMenu.style.left = (width - 400) + "px";
+            }else{
+                rightMenu.style.left = e.clientX + "px";
+            }
+            // rightMenu.style.left = e.clientX + "px";
+            // rightMenu.style.top = e.clientY + "px";
+            rightMenu.style.display = 'block';
+        }
+        function hiddenRightMenu(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+        //二级菜单事件
+        document.getElementById('generate-sql').addEventListener('mouseover', (e) => {
+            document.getElementById('right-menu2').style.display = 'block';
+        })
+        document.getElementById('generate-sql').addEventListener('mouseout', (e) => {
+            document.getElementById('right-menu2').style.display = 'none';
+        })
+        document.getElementById('copy').addEventListener('mouseover', (e) => {
+            document.getElementById('right-menu3').style.display = 'block';
+        })
+        document.getElementById('copy').addEventListener('mouseout', (e) => {
+            document.getElementById('right-menu3').style.display = 'none';
+        })
+    </script>
+</body>
+
+</html>

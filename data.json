@@ -1,0 +1,27 @@
+{
+    "MType3DModel": {
+        "MTYPE_OBJECT": "./models/e2c.glb",
+        "MTYPE_SURFACE": "./models/SURFACE.glb",
+        "MTYPE_CARRIER": "./models/SURFACE.glb",
+        "MTYPE_AIR": "./models/AIR.glb",
+        "MTYPE_FIXEDWING": "./models/FIXEDWING.glb",
+        "MTYPE_FIXEDWINGX": "./models/FIXEDWINGX.glb",
+        "MTYPE_MISSILE": "./models/MISSILE.glb",
+        "MTYPE_HELO": "./models/HELO.glb",
+        "MTYPE_SUBSURFACE": "./models/SUBSURFACE.glb",
+        "MTYPE_SUBMARINE": "./models/SUBMARINE.glb",
+        "MTYPE_TORPEDO": "./models/TORPEDO.glb",
+        "MTYPE_FIXED": "./models/_FIXED.glb",
+        "MTYPE_PLATFORM": "./models/e2c.glb",
+        "MTYPE_AIRFIELD": "./models/AIRFIELD.glb",
+        "MTYPE_BALLISTIC": "./models/BALLISTIC.glb",
+        "MTYPE_SONOBUOY": "./models/SONOBUOY.glb",
+        "MTYPE_AIRCM": "./models/AIRCM.glb",
+        "MTYPE_GROUNDVEHICLE": "./models/GROUNDVEHICLE.glb",
+        "MTYPE_FUELTANK": "./models/FUELTANK.glb",
+        "MTYPE_LASERGUIDEDBOMB": "./models/LASERGUIDEDBOMB.glb",
+        "MTYPE_WATERCM": "./models/WATERCM.glb",
+        "MTYPE_BALLISTICMISSILE": "./models/BALLISTICMISSILE.glb",
+        "MTYPE_ROCKET": "./models/ROCKET.glb"
+    }
+}
