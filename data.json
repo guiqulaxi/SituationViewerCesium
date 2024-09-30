@@ -22,6 +22,7 @@
         "MTYPE_LASERGUIDEDBOMB": "./models/LASERGUIDEDBOMB.glb",
         "MTYPE_WATERCM": "./models/WATERCM.glb",
         "MTYPE_BALLISTICMISSILE": "./models/BALLISTICMISSILE.glb",
-        "MTYPE_ROCKET": "./models/ROCKET.glb"
+        "MTYPE_ROCKET": "./models/ROCKET.glb",
+         "MTYPE_SPACE": "./models/SATELITE.glb"
     }
 }
